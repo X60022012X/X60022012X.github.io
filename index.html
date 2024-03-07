@@ -41,27 +41,26 @@
       ctx.fillStyle = farge
       ctx.fill()
     }
-
-    function endreFarge(){
-      farge = `rgb(${Math.floor(Math.random()* 256)}, ${Math.floor(Math.random()* 256)}, ${Math.floor(Math.random()* 256)})`
-    }
-
    
-    canvas.addEventListener('mousedown', endreFarge)
-
-    document.addEventListener('keydown', function(e){
-      if(e.key == 'Enter'){
-        r = Math.floor(Math.random()* 50)
+    canvas.addEventListener('keydown', function(e){
+      if(e.key == 'c'){
+        farge = `rgb(${Math.floor(Math.random()* 256)}, ${Math.floor(Math.random()* 256)}, ${Math.floor(Math.random()* 256)})`
       }
     })
 
     document.addEventListener('keydown', function(e){
+      if(e.key == 'r'){
+        r = Math.floor(Math.random()* 50)
+      }
+    })
+
+    document.addEventListener('mousedown', function(e){
       if(e.key == 'c'){
         canvas.addEventListener('mousemove', tegnSirkle)
       }
     })
 
-    document.addEventListener('keyup', function(e){
+    document.addEventListener('mouseup', function(e){
       if(e.key == 'c'){
         canvas.removeEventListener('mousemove', tegnSirkle)
       }
