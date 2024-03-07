@@ -55,12 +55,14 @@
     })
 
     document.addEventListener('mousedown', function(e){
+      console.log('Down')
       if(e.key == 'c'){
         canvas.addEventListener('mousemove', tegnSirkle)
       }
     })
 
     document.addEventListener('mouseup', function(e){
+      console.log('up')
       if(e.key == 'c'){
         canvas.removeEventListener('mousemove', tegnSirkle)
       }
