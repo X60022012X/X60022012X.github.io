@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas{
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Introduksjon til canvas</h1>
+  <canvas id="canvas" width="400px" height="500px">
+  </canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas')
+    let ctx = canvas.getContext('2d')
+    let farge
+    let r = 15
+    let x
+    let y
+    let startDegree
+    let endDegree 
+
+    function tegnSirkle(e){
+      //ctx.clearRect(0,0, canvas.width, canvas.height)
+      ctx.beginPath()
+
+      x = e.offsetX
+      y = e.offsetY
+      
+      startDegree = 0
+      endDegree = 2 * Math.PI
+      ctx.arc(x, y, r, startDegree, endDegree);
+      ctx.stroke();
+
+
+      ctx.fillStyle = farge
+      ctx.fill()
+    }
+
+    function endreFarge(){
+      farge = `rgb(${Math.floor(Math.random()* 256)}, ${Math.floor(Math.random()* 256)}, ${Math.floor(Math.random()* 256)})`
+    }
+
+   
+    canvas.addEventListener('mousedown', endreFarge)
+
+    document.addEventListener('keydown', function(e){
+      if(e.key == 'Enter'){
+        r = Math.floor(Math.random()* 50)
+      }
+    })
+
+    document.addEventListener('keydown', function(e){
+      if(e.key == 'c'){
+        canvas.addEventListener('mousemove', tegnSirkle)
+      }
+    })
+
+    document.addEventListener('keyup', function(e){
+      if(e.key == 'c'){
+        canvas.removeEventListener('mousemove', tegnSirkle)
+      }
+    })
+    
+  </script>
+</body>
+</html>
