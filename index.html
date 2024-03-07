@@ -54,11 +54,11 @@
       }
     })
 
-    canvas.addEventListener('mousedown', function(e){
+    document.addEventListener('mousedown', function(e){
       canvas.addEventListener('mousemove', tegnSirkle)
     })
 
-    canvas.addEventListener('mouseup', function(e){
+    document.addEventListener('mouseup', function(e){
       canvas.removeEventListener('mousemove', tegnSirkle)
     })
     
